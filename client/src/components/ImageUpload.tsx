@@ -43,10 +43,10 @@ const ImageUpload:React.FC<ImageUploadProps> = ({ onUpload }) => {
         formData.append('frontImage',frontImage)
         formData.append('backImage',backImage)
         try {
-      const response = await axios.post('http://localhost:5000/api/ocr/process', formData, {
+      const response = await axios.post('http://localhost:3000/api/ocr/process', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
-      onUpload(response.data);
+      onUpload(response.data.result);
       setError('');
     } catch (err) {
       setError('Error processing images. Please try again.');
