@@ -2,17 +2,24 @@ import { useState } from "react";
 import ImageUpload from "./components/ImageUpload";
 import ResultDisplay from "./components/ResultDisplay";
 
-
-
 function App() {
-const [ocrData, setOcrData] = useState<{ [key: string]: string } | null>(null);
+  const [ocrData, setOcrData] = useState<{ [key: string]: string } | null>(null);
+
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10">
-      <h1 className="text-4xl font-bold text-gray-800 mb-8">Aadhaar OCR System</h1>
-      <ImageUpload onUpload={setOcrData} />
-      <ResultDisplay data={ocrData} />
+    <div className="min-h-screen bg-white flex items-center justify-center py-10 px-4">
+      <div className="flex flex-col md:flex-row gap-10 w-full max-w-7xl ">
+        {/* Upload Section */}
+        <div className="flex-1">
+          <ImageUpload onUpload={setOcrData} />
+        </div>
+
+        {/* Result Section */}
+        <div className="flex-1">
+          <ResultDisplay data={ocrData} />
+        </div>
+      </div>
     </div>
   );
 }
 
-export default App
+export default App;
